@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+    {% block bodyblock %}
+        {% if user.user_type == 'student' %}
+        <br>
+        <br>
+        <div class="container">
+        <div class="card text-center">
+            <div class="card-header">
+              Logged in as student
+            </div>
+            <div class="card-body mx-5">
+              <h5 class="card-title">{{ student.username }}</h5>
+              <p class="card-text"> {{ student.email }}  </p>
+              <p class="card-text"> {{ student.phone }}  </p>
+              <a href="{% url 'logout' %}" class="btn btn-outline-success">Logout</a>
+
+            </div>
+          </div>
+          </div>
+
+        {% else %}
+        <br>
+        <br>
+        <div class="container">
+        <div class="card text-center">
+            <div class="card-header">
+              Logged in as Teacher
+            </div>
+            <div class="card-body mx-5">
+                <div class="table-responsive">
+                <table class="table">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">Student's username</th>
+                        <th scope="col">Student's E-mail</th>
+                        <th scope="col">Student's phone number</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for student in students %}
+                      <tr>
+                        <td>{{student.username}}</td>
+                        <td>{{student.email}}</td>
+                        <td>{{student.phone}}</td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                  </div>
+              <a href="{% url 'logout' %}" class="btn btn-outline-success">Logout</a>
+            </div>
+          </div>
+          </div>
+        {% endif %}
+    {% endblock %}
