@@ -1,2 +1,2 @@
 email  = 'devtechathon@gmail.com'
-password = 'returnzer0'
+password = ''
